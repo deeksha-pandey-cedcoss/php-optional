@@ -9,8 +9,15 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <?php
+$protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off')
+    || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+$CurPageURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+echo "The URL of current page: " . $CurPageURL;
+echo "<br>";
+
 $str = $_GET['string'];
 $str = explode("/", $str);
+echo "<pre>";
 print_r($str);
 
 ?>
